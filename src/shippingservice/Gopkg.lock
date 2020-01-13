@@ -307,19 +307,19 @@
   branch = "master"
   name = "github.com/soheilhy/cmux"
   packages = ["."]
- source = "github.com/soheilhy/cmux"
+  source = "github.com/soheilhy/cmux"
 
 [[projects]]
   branch = "master"
   name = "github.com/grpc-ecosystem/go-grpc-prometheus"
   packages = ["."]
- source = "github.com/grpc-ecosystem/go-grpc-prometheus"
+  source = "github.com/grpc-ecosystem/go-grpc-prometheus"
 
 [[projects]]
   branch = "master"
   name = "github.com/prometheus/client_golang/prometheus/promhttp"
   packages = ["."]
- source = "github.com/prometheus/client_golang/prometheus/promhttp"
+  source = "github.com/prometheus/client_golang/prometheus/promhttp"
 
 
 
