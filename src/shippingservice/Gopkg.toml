@@ -34,7 +34,7 @@
   version = "0.5.0"
 
 [[constraint]]
-  name = "github.com/prometheus/client_golang/prometheus/promhttp"
+  name = "github.com/prometheus/client_golang"
   branch = "master"
 
 [[constraint]]
