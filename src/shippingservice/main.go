@@ -91,16 +91,15 @@ func main() {
 
 	// Register reflection service on gRPC server.
 	reflection.Register(srv)
-	go srv.Serve(lis_grpc)
 	
-	if err := srv.Serve(lis); err != nil {
+	if err := srv.Serve(lis_grpc); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}
 
 	httpS := &http.Server{
 		Handler: promhttp.Handler(),
 	}
-	 
+
     if err := httpS.Serve(lis_http); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}
