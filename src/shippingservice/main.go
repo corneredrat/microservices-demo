@@ -35,7 +35,7 @@ import (
 	"google.golang.org/grpc/status"
 	"github.com/soheilhy/cmux"
 	"github.com/grpc-ecosystem/go-grpc-prometheus"
-	"github.com/prometheus/client_golang/`prometheus/promhttp`"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 
 	pb "github.com/GoogleCloudPlatform/microservices-demo/src/shippingservice/genproto"
 	healthpb "google.golang.org/grpc/health/grpc_health_v1"
