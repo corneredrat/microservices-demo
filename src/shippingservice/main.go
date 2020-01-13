@@ -35,7 +35,7 @@ import (
 	"google.golang.org/grpc/status"
 	"github.com/soheilhy/cmux"
 	"github.com/grpc-ecosystem/go-grpc-prometheus"
-	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"github.com/prometheus/client_golang/`prometheus/promhttp`"
 
 	pb "github.com/GoogleCloudPlatform/microservices-demo/src/shippingservice/genproto"
 	healthpb "google.golang.org/grpc/health/grpc_health_v1"
@@ -82,7 +82,7 @@ func main() {
 
 	srv := grpc.NewServer(grpc.StatsHandler(&ocgrpc.ServerHandler{}),
 		grpc.UnaryInterceptor(grpc_prometheus.UnaryServerInterceptor),
-		grpc.StreamInterceptor(grpc_prometheus.StreamServerInterceptor)
+		grpc.StreamInterceptor(grpc_prometheus.StreamServerInterceptor),
 	)
 	svc := &server{}
 	pb.RegisterShippingServiceServer(srv, svc)
@@ -98,7 +98,7 @@ func main() {
 	httpS := &http.Server{
 		Handler: promhttp.Handler(),
 	}
-	if err := httpS.serve(lis_http); err != nil; {
+	if err := httpS.serve(lis_http); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}
 }
