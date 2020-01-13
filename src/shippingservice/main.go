@@ -97,6 +97,7 @@ func main() {
 		Handler: promhttp.Handler(),
 	}
 	go httpS.Serve(lis_http)
+	conn_muxer.Serve()
 }
 
 // server controls RPC service responses.
