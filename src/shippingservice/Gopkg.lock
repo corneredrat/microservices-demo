@@ -352,6 +352,26 @@
   version = "v1.2.0"
 
 
+[[projects]]                                           
+  digest = "1:d6afaeed1502aa28e80a4ed0981d570ad91b2579193404256ce672ed0a609e0d"
+  name = "github.com/beorn7/perks"
+  packages = ["quantile"]
+  pruneopts = "UT"                                                             
+  revision = "37c8de3658fcb183f997c4e13e8337516ab753e6" 
+  version = "v1.0.1"
+
+[[projects]]                                                                   
+  digest = "1:f119e3205d3a1f0f19dbd7038eb37528e2c6f0933269dc344e305951fb87d632"
+  name = "github.com/prometheus/common"                                        
+  packages = [                                                                 
+    "expfmt",                                          
+    "internal/bitbucket.org/ww/goautoneg",             
+    "model",                                                                   
+  ]                                                                            
+  pruneopts = "UT"                                                             
+  revision = "287d3e634a1e550c9e463dd7e5a75a422c614505"                        
+  version = "v0.7.0"
+
 
 [solve-meta]
   analyzer-name = "dep"
