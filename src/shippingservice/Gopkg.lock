@@ -372,6 +372,15 @@
   revision = "287d3e634a1e550c9e463dd7e5a75a422c614505"                        
   version = "v0.7.0"
 
+[[projects]]      
+  digest = "1:ff5ebae34cfbf047d505ee150de27e60570e8c394b3b8fdbb720ff6ac71985fc"
+  name = "github.com/matttproud/golang_protobuf_extensions"
+  packages = ["pbutil"]
+  pruneopts = "UT"
+  revision = "c12348ce28de40eed0136aa2b644d0ee0650e56c"                        
+  version = "v1.0.1"
+
+
 
 [solve-meta]
   analyzer-name = "dep"
