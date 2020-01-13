@@ -303,6 +303,26 @@
   revision = "1d89a3c832915b2314551c1d2a506874d62e53f7"
   version = "v1.22.0"
 
+[[projects]]
+  branch = "master"
+  name = "github.com/soheilhy/cmux"
+  packages = ["."]
+ source = "github.com/soheilhy/cmux"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/grpc-ecosystem/go-grpc-prometheus"
+  packages = ["."]
+ source = "github.com/grpc-ecosystem/go-grpc-prometheus"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/prometheus/client_golang/prometheus/promhttp"
+  packages = ["."]
+ source = "github.com/prometheus/client_golang/prometheus/promhttp"
+
+
+
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
