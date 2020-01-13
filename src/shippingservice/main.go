@@ -93,10 +93,17 @@ func main() {
 	reflection.Register(srv)
 	go srv.Serve(lis_grpc)
 	
+	if err := srv.Serve(lis); err != nil {
+		log.Fatalf("failed to serve: %v", err)
+	}
+
 	httpS := &http.Server{
 		Handler: promhttp.Handler(),
 	}
-	go httpS.Serve(lis_http)
+	 
+    if err := httpS.Serve(lis_http); err != nil {
+		log.Fatalf("failed to serve: %v", err)
+	}
 	conn_muxer.Serve()
 }
 
