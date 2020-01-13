@@ -19,6 +19,7 @@ import (
 	"net"
 	"os"
 	"time"
+	"net/http"
 
 	"cloud.google.com/go/profiler"
 	"contrib.go.opencensus.io/exporter/stackdriver"
@@ -32,6 +33,9 @@ import (
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/reflection"
 	"google.golang.org/grpc/status"
+	"github.com/soheilhy/cmux"
+	"github.com/grpc-ecosystem/go-grpc-prometheus"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 
 	pb "github.com/GoogleCloudPlatform/microservices-demo/src/shippingservice/genproto"
 	healthpb "google.golang.org/grpc/health/grpc_health_v1"
@@ -67,11 +71,19 @@ func main() {
 	}
 	port = fmt.Sprintf(":%s", port)
 
-	lis, err := net.Listen("tcp", port)
+	lis_tcp, err := net.Listen("tcp", port)
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
-	srv := grpc.NewServer(grpc.StatsHandler(&ocgrpc.ServerHandler{}))
+
+	conn_muxer 	:= cmux.New(lis_tcp)
+	lis_grpc 	:= conn_muxer.Match(cmux.HTTP2HeaderField("content-type", "application/grpc"))
+	lis_http	:= conn_muxer.Match(cmux.HTTP1Fast())
+
+	srv := grpc.NewServer(grpc.StatsHandler(&ocgrpc.ServerHandler{}),
+		grpc.UnaryInterceptor(grpc_prometheus.UnaryServerInterceptor),
+		grpc.StreamInterceptor(grpc_prometheus.StreamServerInterceptor)
+	)
 	svc := &server{}
 	pb.RegisterShippingServiceServer(srv, svc)
 	healthpb.RegisterHealthServer(srv, svc)
@@ -79,7 +91,14 @@ func main() {
 
 	// Register reflection service on gRPC server.
 	reflection.Register(srv)
-	if err := srv.Serve(lis); err != nil {
+	if err := srv.Serve(lis_grpc); err != nil {
+		log.Fatalf("failed to serve: %v", err)
+	}
+  
+	httpS := &http.Server{
+		Handler: promhttp.Handler(),
+	}
+	if err := httpS.serve(lis_http); err != nil; {
 		log.Fatalf("failed to serve: %v", err)
 	}
 }
