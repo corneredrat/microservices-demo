@@ -4,7 +4,7 @@ kind: DestinationRule
 metadata:
   name: reduce-ads
 spec:
-  host: adservice
+  host: frontend
   trafficPolicy:
     loadBalancer:
       simple: RANDOM
@@ -22,14 +22,14 @@ metadata:
   name: reduce-ads
 spec:
   hosts:
-  - adservice
+  - frontend
   http:
   - route:
     - destination:
-        host: adservice
+        host: frontend
         subset: v1
       weight: 50
     - destination:
-        host: adservice
+        host: frontend
         subset: v2
       weight: 50
