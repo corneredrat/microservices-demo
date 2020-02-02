@@ -8,12 +8,12 @@ spec:
       app: adservice
   ingress:
   - from:
-    - podSelector:
+    podSelector:
       matchLabels:
         app: frontend
-      - namespaceSelector:
-        matchLabels:
-          purpose: g2g
+    namespaceSelector:
+      matchLabels:
+        purpose: g2g
 
 ---
 kind: NetworkPolicy
