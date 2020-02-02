@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: gcr.io/google-samples/microservices-demo/frontend:v0.1.3
+          image: raghunandanbs/microservice-demo:frontend
           ports:
           - containerPort: 8080
           readinessProbe:
