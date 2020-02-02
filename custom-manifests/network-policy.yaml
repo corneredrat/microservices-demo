@@ -9,4 +9,6 @@ spec:
     matchLabels:
   ingress:
   - from:
-    - podSelector: {}
+    - namespaceSelector:
+        matchLabels:
+          purpose: g2g
