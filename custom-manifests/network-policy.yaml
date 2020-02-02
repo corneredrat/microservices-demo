@@ -8,9 +8,9 @@ spec:
       app: adservice
   ingress:
   - from:
-      - podSelector:
-          matchLabels:
-            app: frontend
+    - podSelector:
+      matchLabels:
+        app: frontend
       - namespaceSelector:
         matchLabels:
           purpose: g2g
