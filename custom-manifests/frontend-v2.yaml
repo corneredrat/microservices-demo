@@ -72,6 +72,7 @@ spec:
   type: ClusterIP
   selector:
     app: frontend
+    version: v2
   ports:
   - name: http
     port: 80
