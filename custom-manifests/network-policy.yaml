@@ -1,4 +1,3 @@
-
 kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
 metadata:
@@ -7,9 +6,6 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-      app: adservice
   ingress:
   - from:
-    - namespaceSelector:
-        matchLabels:
-          purpose: g2g
+    - podSelector: {}
