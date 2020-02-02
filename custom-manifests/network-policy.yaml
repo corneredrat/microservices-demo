@@ -6,6 +6,5 @@ metadata:
 spec:
   podSelector:
     matchLabels:
-  ingress:
-  - from:
-    - podSelector: {}
+      app: adservice
+  ingress: []
