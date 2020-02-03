@@ -22,7 +22,9 @@ metadata:
   name: reduce-ads
 spec:
   hosts:
-  - frontend
+  - "*"
+  gateways:
+  - ext-host-gwy
   http:
   - route:
     - destination:
