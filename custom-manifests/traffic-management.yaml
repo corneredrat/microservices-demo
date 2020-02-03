@@ -28,10 +28,10 @@ spec:
   http:
   - route:
     - destination:
-        host: frontend
+        host: "*"
         subset: v1
       weight: 90
     - destination:
-        host: frontend
+        host: "*"
         subset: v2
       weight: 10
